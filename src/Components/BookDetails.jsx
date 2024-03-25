@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
 
 
@@ -128,7 +128,8 @@ const BookDetails = () => {
 
     const {bookId} = useParams();
 
-    const {bookName, author, image, tags, category, rating, review } = data[bookId-1]
+    const {bookName, author, image, tags, category, rating, review, totalPages
+    , publisher, yearOfPublishing } = data[bookId-1]
     
     // const [book, setBook] = useState([])
 
@@ -140,14 +141,39 @@ const BookDetails = () => {
     
     return (
         <div className="flex gap-12">
-           <div className=" p-16 bg-[#1313130D] border-2">
+           <div className=" p-16 bg-[#1313130D] rounded-xl">
         <img className="w-[430px]" src={image} alt="" />
            </div>
            <div className="w-[700px]">
             <h2 className="text-[40px] font-bold">{bookName}</h2>
             <h2 className="text-xl mt-3 font-medium border-b-2 border-dotted pb-4">By : {author}</h2>
             <h2 className="text-xl font-medium my-4">{category}</h2>
-            <h2>{review}</h2>
+            <h2><span className="font-bold">Review : </span> {review}</h2>
+            <div className="flex gap-8 items-center my-4 border-b-2 border-dotted pb-4">
+            <h2 className="font-bold">Tag : </h2>
+            <h2 className="py-2 px-4 font-medium rounded-full text-[#23BE0A] bg-[#23BE0A0D]">#{tags[0]}</h2>
+            <h2 className="py-2 px-4 font-medium rounded-full text-[#23BE0A] bg-[#23BE0A0D]">#{tags[1]}</h2>
+            </div>
+            <div className="flex gap-10 my-4">
+                <h2>Number of Pages:</h2>
+                <h2 className="font-semibold">{totalPages}</h2>
+            </div>
+            <div className="flex gap-24">
+                <h2>Publisher : </h2>
+                <h2 className="font-semibold">{publisher}</h2>
+            </div>
+            <div className="flex gap-8 my-4">
+                <h2>Year of Publishing: </h2>
+                <h2 className="font-semibold">{yearOfPublishing}</h2>
+            </div>
+            <div className="flex gap-28">
+                <h2>Rating : </h2>
+                <h2 className="font-semibold">{rating}</h2>
+            </div>
+            <div className="flex gap-4 my-4">
+            <button className="btn">Read</button>
+            <button className="btn bg-[#50B1C9] text-white">Wishlist</button>
+            </div>
            </div>
         </div>
     );

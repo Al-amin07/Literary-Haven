@@ -1,5 +1,4 @@
-import { setItem } from "localforage";
-import { useEffect, useState } from "react";
+
 import Item from "./Item";
 import { useLoaderData } from "react-router-dom";
 

@@ -128,8 +128,9 @@ const BookDetails = () => {
 
     const {bookId} = useParams();
 
+    const singleBook = data[bookId-1];
     const {bookName, author, image, tags, category, rating, review, totalPages
-    , publisher, yearOfPublishing } = data[bookId-1]
+      , publisher, yearOfPublishing } = singleBook;
     
     // const [book, setBook] = useState([])
 
@@ -141,8 +142,8 @@ const BookDetails = () => {
     
     return (
         <div className="flex gap-12">
-           <div className=" p-16 bg-[#1313130D] rounded-xl">
-        <img className="w-[430px]" src={image} alt="" />
+           <div className=" p-12 bg-[#1313130D] rounded-xl">
+        <img className="w-[500px] min-h-screen/2" src={image} alt="" />
            </div>
            <div className="w-[700px]">
             <h2 className="text-[40px] font-bold">{bookName}</h2>

@@ -14,11 +14,14 @@ const Books = () => {
         loadBooks()
     }, [])
     return (
-        <div className="grid grid-cols-3 gap-5">
+      <div>
+        <h2 className="text-5xl font-bold text-center">Books</h2>
+          <div className="grid grid-cols-3 gap-5">
             {
                  books.map(item => <Item key={item.bookId} item={item}></Item>)
             }
         </div>
+      </div>
     );
 };
 

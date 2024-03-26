@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Nav.css";
 const Nav = () => {
   return (
-    <nav className="navbar bg-base-100">
+    <nav className="navbar bg-base-100 mt-8">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@ const Nav = () => {
             <NavLink to="/read">Pages to Read</NavLink>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">BookStore</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-6 items-center">

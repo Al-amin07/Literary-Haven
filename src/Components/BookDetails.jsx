@@ -1,6 +1,7 @@
 import ReadLoacalStorage from "./ReadLoacalStorage";
 import { useParams } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import WishLocalStorage from "./WishLocalStorage";
 const BookDetails = () => {
@@ -134,12 +135,36 @@ const BookDetails = () => {
   ];
 
   const handleRead = () => {
-    ReadLoacalStorage(singleBook);
+  const isDone = ReadLoacalStorage(singleBook);
+  if(isDone){
+    toast("Books Added To Read List !");
+  }
+  else{
+    toast("Already Exists in Book List !");
+  }
+//    if(!existBook){
+    
+//  saveBook.push(data);
+//      localStorage.setItem("BookRead", JSON.stringify(saveBook))
+//     alert('Successfully Added')
+//    }
+//    else{
+//     alert("Already Exits");
+//    }
     
   };
 
   const handleWish = () => {
-    WishLocalStorage(singleBook)
+    const isDone  = WishLocalStorage(singleBook);
+    if(isDone=='Book'){
+      toast('Already Exists in Book List!!!');
+    }
+    else if(isDone == true){
+      toast('Books Added to Wish List!!!');
+    }
+    else{
+      toast('Already Exists in Wosh List!!!')
+    }
   }
 
   const { bookId } = useParams();

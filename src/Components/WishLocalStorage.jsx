@@ -9,14 +9,14 @@ const WishLocalStorage = (data) => {
         if(!isWish){
             wishList.push(data);
             localStorage.setItem("WishList", JSON.stringify(wishList))
-            alert('Successfully Added')
+           return true;
         }
         else{
-            alert('Already Exist')
+           return false;
         }
     }
     else{
-        alert('Already Exists in Book List')
+        return 'Book';
     }
 };
 

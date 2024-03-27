@@ -5,16 +5,18 @@ const ReadLoacalStorage = (data) => {
 
  const saveBook = JSON.parse(localStorage.getItem("BookRead")) || [];
  const existBook = saveBook.find(item => item.bookId == data.bookId)
-//  return [saveBook , existBook];
+
  if(!existBook){
     
     saveBook.push(data);
     localStorage.setItem("BookRead", JSON.stringify(saveBook))
-   alert('Successfully Added')
+  //  alert('Successfully Added')
+   return true;
  }
  else{
    // toast("Book is Already Exists in Read List")
-   alert('You Have Already read this Book!!!')
+  //  alert('You Have Already read this Book!!!')
+   return false;
  }
 
 };

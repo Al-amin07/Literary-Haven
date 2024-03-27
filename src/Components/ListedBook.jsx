@@ -3,17 +3,12 @@ import { ReadBook } from "./ReadLoacalStorage";
 import ReadedBook from "./ReadedBook";
 import { WishBook } from "./WishLocalStorage";
 import WishedBook from "./WishedBook";
-import { useState } from "react";
+
 const ListedBook = () => {
   const books = ReadBook();
   console.log(books);
   const wishBooks = WishBook();
-  const [toggle, setToggle] = useState(1);
-
-  const updateToggle = (id) => {
-
-    setToggle(id);
-  };
+ 
 
   return (
     <div>

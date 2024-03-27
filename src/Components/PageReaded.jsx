@@ -25,7 +25,7 @@ const PageReaded = () => {
 
     return (
         <div className="mt-12">
-           <BarChart height={570} width={1000} data={data}>
+           <BarChart height={570} width={1100} data={data}>
             <XAxis dataKey='bookName'></XAxis>
             <YAxis dataKey='totalPages'></YAxis>
             <Tooltip></Tooltip>

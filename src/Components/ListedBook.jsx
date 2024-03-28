@@ -1,36 +1,119 @@
 
+import { useState } from "react";
 import { ReadBook } from "./ReadLoacalStorage";
 import ReadedBook from "./ReadedBook";
 import { WishBook } from "./WishLocalStorage";
 import WishedBook from "./WishedBook";
+import Select from 'react-select'
+
+
 
 const ListedBook = () => {
   const books = ReadBook();
-  console.log(books);
+
+  
+  
   const wishBooks = WishBook();
+  
+ const [allBooks, setAllBooks] = useState(books)
+
+  const Assending = (ids) => {
+    
+    let data = [...books];
+    if(ids === 'Rating'){
+      
+      let result = data.sort((a, b) => {
+        const rating1 = a.rating.toString();
+        
+        const rating2 = b.rating.toString();
+        
+        const result = rating2.localeCompare(rating1);
+        
+        return result;
+        
+      }
+    
+    
+     
+    )
+    return result;
+  }
+  if(ids === 'Total Pages'){
+      
+      let result = data.sort((a, b) => {
+        const rating1 = a.totalPages.toString();
+        
+        const rating2 = b.totalPages.toString();
+        
+        const result = rating2.localeCompare(rating1);
+        
+        return result;
+        
+      }
+    
+    
+     
+    )
+    return result;
+  }
+  if(ids === 'Year Of Publishing'){
+      
+      let result = data.sort((a, b) => {
+        const rating1 = a.yearOfPublishing.toString();
+        
+        const rating2 = b.yearOfPublishing.toString();
+        
+        const result = rating2.localeCompare(rating1);
+        
+        return result;
+        
+      }
+    
+    
+     
+    )
+    return result;
+  }
+    
+  }
+
  
 
+ 
+
+  const handleRating = (event) => {
+   const datas =  Assending(event.label)
+   
+   setAllBooks(datas);
+   
+   
+  }
+
+  const options = [
+    { value: 'rating', label: 'Rating' },
+    { value: 'totalPages', label: 'Total Pages' },
+    { value: 'yearOfPublishing', label: 'Year Of Publishing' }
+  ]
+
+  
   return (
     <div>
       <h2 className="text-center text-4xl font-bold py-6 bg-[#F3F3F3]">
         Books
       </h2>
+      
       <div className="flex justify-center my-5">
-        <select
-          className="btn bg-[#23BE0A] py-2 px-4 text-white font-bold text-xl"
-          name=""
-          id=""
-        >
-          <option value="">Name</option>
-          <option value="">Id</option>
-          <option value="">Pages</option>
-        </select>
+        
+      
+         <Select className="w-[200px] " options={options} onChange={handleRating}/>
       </div>
-      {/* Tab */}
+      
+
+
       <div role="tablist" className="tabs tabs-bordered">
   <input type="radio" name="my_tabs_1" role="tab" className="tab text-xl" aria-label="Read Book" checked />
   <div role="tabpanel" className="tab-content p-10">
-  {books.map((book) => (
+  {allBooks.map((book) => (
           <ReadedBook key={book.bookId} book={book}></ReadedBook>
         ))}
   </div>
@@ -44,28 +127,7 @@ const ListedBook = () => {
 
   
 </div>
-{/* Tab */}
 
-      {/* <div className="flex  gap-3">
-        <button onClick={() => updateToggle(1)} className="btn">
-          Read Book
-        </button>
-        <button onClick={() => updateToggle(2)} className="btn">
-          Wishlist Books
-        </button>
-      </div>
-
-      <div className={toggle === 1 ? "block" : "hidden"}>
-        {books.map((book) => (
-          <ReadedBook key={book.bookId} book={book}></ReadedBook>
-        ))}
-      </div>
-
-      <div className={toggle === 2 ? "block" : "hidden"}>
-        {wishBooks.map((book) => (
-          <WishedBook key={book.bookId} book={book}></WishedBook>
-        ))}
-      </div> */}
     </div>
   );
 };

@@ -184,9 +184,9 @@ const BookDetails = () => {
   } = singleBook;
 
   return (
-    <div className="flex gap-12">
-      <div className=" p-12 bg-[#1313130D] rounded-xl">
-        <img className="w-[500px] min-h-screen/2" src={image} alt="" />
+    <div className="flex flex-col lg:flex-row gap-4 lg:gap-12 p-3">
+      <div className=" p-6 bg-[#1313130D] rounded-xl">
+        <img className=" lg:w-[500px] h-[400px] lg:min-h-screen/2" src={image} alt="" />
       </div>
       <div className="w-[700px]">
         <h2 className="text-[40px] font-bold">{bookName}</h2>
